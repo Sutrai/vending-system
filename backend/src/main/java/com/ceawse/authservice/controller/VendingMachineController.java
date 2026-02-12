@@ -20,7 +20,6 @@ public class VendingMachineController {
         return service.findAll(name);
     }
 
-    // Тот самый эндпоинт для "Монитора ТА"
     @GetMapping("/monitor")
     public List<Map<String, Object>> getMonitor() {
         return service.findAll(null).stream()
@@ -31,6 +30,12 @@ public class VendingMachineController {
     @PostMapping
     public VendingMachine create(@RequestBody VendingMachine vm) {
         return service.save(vm);
+    }
+
+    // НОВЫЙ ЭНДПОИНТ: Массовая загрузка
+    @PostMapping("/bulk")
+    public void createBulk(@RequestBody List<VendingMachine> machines) {
+        service.saveAll(machines);
     }
 
     @DeleteMapping("/{id}")

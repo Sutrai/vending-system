@@ -35,6 +35,11 @@ public class VendingMachineService {
         return repository.save(vm);
     }
 
+    // НОВЫЙ МЕТОД: Сохранение списка
+    public void saveAll(List<VendingMachine> machines) {
+        repository.saveAll(machines);
+    }
+
     public void delete(Long id) {
         repository.deleteById(id);
     }
